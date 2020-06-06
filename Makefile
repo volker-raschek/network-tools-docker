@@ -1,39 +1,47 @@
 # CONTAINER_RUNTIME
-CONTAINER_RUNTIME:=$(shell which docker)
+# The CONTAINER_RUNTIME variable will be used to specified the path to a
+# container runtime. This is needed to start and run a container image.
+CONTAINER_RUNTIME?=$(shell which docker)
 
 # BASE_IMAGE
-# Definition of the base container image for flucky
-BASE_IMAGE_REGISTRY:=docker.io
+# Defines the name of the container base image on which should be built the new
+# CONTAINER_IMAGE.
+BASE_IMAGE_REGISTRY_NAME:=docker.io
 BASE_IMAGE_NAMESPACE:=library
 BASE_IMAGE_NAME:=alpine
 BASE_IMAGE_VERSION:=3.11.2
-BASE_IMAGE_FULL=${BASE_IMAGE_REGISTRY}/${BASE_IMAGE_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
+BASE_IMAGE_FULL=${BASE_IMAGE_REGISTRY_NAME}/${BASE_IMAGE_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
 BASE_IMAGE_SHORT=${BASE_IMAGE_NAMESPACE}/${BASE_IMAGE_NAME}:${BASE_IMAGE_VERSION}
 
-CONTAINER_IMAGE_REGISTRY:=docker.io
+# CONTAINER_IMAGE_REGISTRY_NAME
+# Defines the name of the new container to be built using several variables.
+CONTAINER_IMAGE_REGISTRY_NAME:=docker.io
 CONTAINER_IMAGE_REGISTRY_USER:=volkerraschek
-CONTAINER_IMAGE_NAMESPACE:=volkerraschek
-CONTAINER_IMAGE_NAME:=network-tools
-CONTAINER_IMAGE_VERSION?=latest
-CONTAINER_IMAGE_SHORT:=${CONTAINER_IMAGE_NAMESPACE}/${CONTAINER_IMAGE_NAME}:${CONTAINER_IMAGE_VERSION}
-CONTAINER_IMAGE_FULL:=${CONTAINER_IMAGE_REGISTRY}/${CONTAINER_IMAGE_NAMESPACE}/${CONTAINER_IMAGE_NAME}:${CONTAINER_IMAGE_VERSION}
 
-# DEBIAN BASED CONTAINER IMAGE
+CONTAINER_IMAGE_NAMESPACE?=${CONTAINER_IMAGE_REGISTRY_USER}
+CONTAINER_IMAGE_NAME:=build-image
+CONTAINER_IMAGE_VERSION?=latest
+CONTAINER_IMAGE_FULL=${CONTAINER_IMAGE_REGISTRY_NAME}/${CONTAINER_IMAGE_NAMESPACE}/${CONTAINER_IMAGE_NAME}:${CONTAINER_IMAGE_VERSION}
+CONTAINER_IMAGE_SHORT=${CONTAINER_IMAGE_NAMESPACE}/${CONTAINER_IMAGE_NAME}:${CONTAINER_IMAGE_VERSION}
+
+# BUILD CONTAINER IMAGE
 # ==============================================================================
-PHONY+=container-image/build
+PHONY:=container-image/build
 container-image/build:
 	${CONTAINER_RUNTIME} build \
 		--build-arg BASE_IMAGE=${BASE_IMAGE_FULL} \
+		--file Dockerfile \
 		--no-cache \
+		--pull \
 		--tag ${CONTAINER_IMAGE_FULL} \
 		--tag ${CONTAINER_IMAGE_SHORT} \
 		.
 
+# PUSH CONTAINER IMAGE
+# ==============================================================================
 PHONY+=container-image/push
-container-image/push: container-image/build
-	${CONTAINER_RUNTIME} login ${CONTAINER_IMAGE_REGISTRY} \
-		--username ${CONTAINER_IMAGE_REGISTRY_USER} \
-		--password ${CONTAINER_IMAGE_REGISTRY_PASSWORD}
+container-image/push:
+	echo ${CONTAINER_IMAGE_REGISTRY_PASSWORD} | ${CONTAINER_RUNTIME} login ${CONTAINER_IMAGE_REGISTRY_NAME} --username ${CONTAINER_IMAGE_REGISTRY_USER} --password-stdin
 	${CONTAINER_RUNTIME} push ${CONTAINER_IMAGE_FULL}
 
 # PHONY
