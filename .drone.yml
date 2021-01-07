@@ -3,6 +3,7 @@ type: docker
 name: build-image-x86_64
 
 steps:
+
 - name: build-image-latest
   image: docker.io/volkerraschek/build-image:latest
   commands:
@@ -29,6 +30,7 @@ steps:
     - master
     event:
     - push
+    - cron
 
 - name: push-image-tagged
   image: docker.io/volkerraschek/build-image:latest
@@ -46,6 +48,22 @@ steps:
     - master
     event:
     - tag
+
+- name: notify
+  image: drillster/drone-email
+  environment:
+    PLUGIN_HOST:
+      from_secret: smtp_host
+    PLUGIN_USERNAME:
+      from_secret: smtp_username
+    PLUGIN_PASSWORD:
+      from_secret: smtp_password
+    PLUGIN_FROM:
+      from_secret: smtp_mail_address
+  when:
+    status:
+    - changed
+    - failure
 
 volumes:
 - name: docker_socket
