@@ -28,7 +28,7 @@ For a kubernetes environment you can use the [YAML-File](network-tools.yaml) by
 executing the following command.
 
 ```bash
-kubectl create -f https://git.cryptic.systems/volker.raschek/network-tools/network-tools.yml
+kubectl create -f https://git.cryptic.systems/volker.raschek/network-tools/raw/branch/master/network-tools.yml
 ```
 
 Execute a shell inside the container by
