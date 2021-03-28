@@ -19,7 +19,7 @@ To use this image execute the following command in a docker environment.
 $ docker run \
     --rm \
     volkerraschek/network-tools:latest \
-      bash
+      sh
 ```
 
 ### Kubernetes
@@ -34,5 +34,5 @@ kubectl create -f https://git.cryptic.systems/volker.raschek/network-tools/raw/b
 Execute a shell inside the container by
 
 ```bash
-kubectl exec -it network-tools -- bash
+kubectl exec -it network-tools -- sh
 ```
