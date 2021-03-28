@@ -5,13 +5,13 @@ metadata:
 spec:
   containers:
   - name: network-tools
-    image: volkerraschek/network-tools:latest
+    image: docker.io/volkerraschek/network-tools:latest
     command: [ "sleep", "3600" ]
     imagePullPolicy: Always
     securityContext:
       capabilities :
-        runAsUser: 1000
         add:
         - NET_ADMIN
         - SYS_TIME
+      runAsUser: 1000
   restartPolicy: Always
