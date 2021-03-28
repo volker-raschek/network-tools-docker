@@ -34,5 +34,5 @@ kubectl create -f https://git.cryptic.systems/volker.raschek/network-tools/raw/b
 Execute a shell inside the container by
 
 ```bash
-kubectl exec -it network-tools -- sh
+kubectl exec -it network-tools -- bash
 ```

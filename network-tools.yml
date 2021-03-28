@@ -8,4 +8,10 @@ spec:
     image: volkerraschek/network-tools:latest
     command: [ "sleep", "3600" ]
     imagePullPolicy: Always
+    securityContext:
+      capabilities :
+        runAsUser: 1000
+        add:
+        - NET_ADMIN
+        - SYS_TIME
   restartPolicy: Always
