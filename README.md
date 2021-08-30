@@ -3,11 +3,10 @@
 [![Build Status](https://drone.cryptic.systems/api/badges/volker.raschek/network-tools/status.svg)](https://drone.cryptic.systems/volker.raschek/network-tools)
 [![Docker Pulls](https://img.shields.io/docker/pulls/volkerraschek/network-tools)](https://hub.docker.com/r/volkerraschek/network-tools)
 
-This project, hosted on
-[git.cryptic.systems](https://git.cryptic.systems/volker.raschek/network-tools),
-contains only files to build the container image. The container image contains
-network tools to analyse or monitor network communication. This can be helpful
-in a containerized environment.
+This project contains all sources to build the container image
+`docker.io/volkerraschek/network-tools`. The primary goal of the image is only
+to contain some network tools to debug container based environments like docker
+or kubernetes.
 
 ## Usage
 

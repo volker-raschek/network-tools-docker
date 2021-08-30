@@ -6,8 +6,14 @@ spec:
   containers:
   - name: network-tools
     image: docker.io/volkerraschek/network-tools:latest
-    command: [ "sleep", "3600" ]
     imagePullPolicy: Always
+    resources:
+      limits:
+        cpu: 250m
+        memory: 250Mi
+      requests:
+        cpu: 100m
+        memory: 125Mi
     securityContext:
       capabilities :
         add:
