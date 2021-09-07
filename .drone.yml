@@ -98,7 +98,7 @@ trigger:
 ---
 kind: pipeline
 type: docker
-name: latest-arm64
+name: latest-armv7
 
 platform:
   os: linux
@@ -110,7 +110,7 @@ steps:
   settings:
     dockerfile: Dockerfile
     auto_tag: false
-    tags: latest-arm64
+    tags: latest-armv7
     repo: volkerraschek/network-tools
     username:
       from_secret: container_image_registry_user
@@ -188,7 +188,7 @@ steps:
 
 depends_on:
 - latest-amd64
-- latest-arm64
+- latest-armv7
 
 trigger:
   event:
