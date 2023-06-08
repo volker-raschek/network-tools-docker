@@ -67,7 +67,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: false
@@ -128,7 +128,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: false
@@ -189,7 +189,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: false
@@ -250,7 +250,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: false
@@ -309,7 +309,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: false
@@ -368,7 +368,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: false
@@ -486,7 +486,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: true
@@ -539,7 +539,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: true
@@ -592,7 +592,7 @@ steps:
   image: git.cryptic.systems/volker.raschek/git:1.2.1
 
 - name: build
-  image: docker.io/plugins/docker:latest
+  image: docker.io/plugins/docker:20.10.9
   settings:
     dockerfile: Dockerfile
     auto_tag: true
