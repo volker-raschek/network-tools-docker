@@ -15,10 +15,11 @@ or kubernetes.
 To use this image execute the following command in a docker environment.
 
 ```bash
-$ docker run \
-    --rm \
-    volkerraschek/network-tools:latest \
-      sh
+docker run \
+  --entrypoint /bin/sh \
+  -it \
+  --rm \
+    docker.io/volkerraschek/network-tools:latest
 ```
 
 ### Kubernetes
