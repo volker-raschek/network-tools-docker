@@ -2,10 +2,9 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/volkerraschek/network-tools)](https://hub.docker.com/r/volkerraschek/network-tools)
 
-This project contains all sources to build the container image
-`docker.io/volkerraschek/network-tools`. The primary goal of the image is only
-to contain some network tools to debug container based environments like docker
-or kubernetes.
+This project contains all sources to build the container image `git.cryptic.systems/volker.raschek/network-tools`. The
+primary goal of the image is only to contain some network tools to debug container based environments like docker or
+kubernetes.
 
 ## Usage
 
@@ -18,13 +17,12 @@ docker run \
   --entrypoint /bin/sh \
   -it \
   --rm \
-    docker.io/volkerraschek/network-tools:latest
+    git.cryptic.systems/volker.raschek/network-tools:latest
 ```
 
 ### Kubernetes
 
-For a kubernetes environment you can use the [YAML-File](network-tools.yaml) by
-executing the following command.
+For a kubernetes environment you can use the [YAML-File](network-tools.yaml) by executing the following command.
 
 ```bash
 kubectl create -f https://git.cryptic.systems/volker.raschek/network-tools/raw/branch/master/network-tools.yml
