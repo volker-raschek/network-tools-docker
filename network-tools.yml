@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: network-tools
-    image: docker.io/volkerraschek/network-tools:latest
+    image: git.cryptic.systems/volker.raschek/network-tools:latest
     imagePullPolicy: Always
     resources:
       limits:

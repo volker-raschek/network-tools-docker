@@ -1,4 +1,4 @@
 version: "3"
 services:
   network-tools:
-    image: volkerraschek/network-tools:latest
+    image: git.cryptic.systems/volker.raschek/network-tools:latest
